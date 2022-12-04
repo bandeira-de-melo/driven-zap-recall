@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import  Card  from "./components/Card";
+import  Cards  from "./components/Cards";
 import LogoContainer from "./components/LogoContainer";
 
-import cards from "./cards";
+
 
 export default function App() {
   
   return (
     <StyledApp>
       <LogoContainer/>
-      <Card cards={cards}/>
+      <Cards/>
     </StyledApp>
   );
 }
