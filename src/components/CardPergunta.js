@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import imgSetaVirar from "../assets/img/seta_virar.png"
-import BotaoResposta from "./BotaoResposta";
-const arrayTextoBotoes = ["Não lembrei","Quase não lembrei", "Zap!"]
+import BotoesResposta from "./BotoesResposta";
+
 
 export default function CardPergunta({perguntaCard, respostaCard, fecharCard, index}){
     const [conteudoCard, setConteudoCard] = useState(perguntaCard)
@@ -17,7 +17,7 @@ export default function CardPergunta({perguntaCard, respostaCard, fecharCard, in
             {conteudoCard === perguntaCard? 
             <><p>{conteudoCard}</p><img src={imgSetaVirar} alt="seta virar" onClick={mostraResposta}/></> 
             : 
-            <><p>{conteudoCard}</p> <BotaoResposta textosBotoes={arrayTextoBotoes} fecharCard={fecharCard} index={index}/></>}
+            <><p>{conteudoCard}</p> <BotoesResposta fecharCard={fecharCard} index={index}/></>}
         </StyledCardPergunta>
     )
 }
