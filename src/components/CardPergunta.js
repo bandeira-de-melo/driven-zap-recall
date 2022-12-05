@@ -15,9 +15,9 @@ export default function CardPergunta({perguntaCard, respostaCard, fecharCard, id
     return(
         <StyledCardPergunta>
             {conteudoCard === perguntaCard? 
-            <><p>{conteudoCard}</p><img src={imgSetaVirar} alt="seta virar" onClick={mostraResposta}/></> 
+            <><p data-test="flashcard-text">{conteudoCard}</p><img src={imgSetaVirar} alt="seta virar" onClick={mostraResposta}/></> 
             : 
-            <><p>{conteudoCard}</p> <BotoesResposta fecharCard={fecharCard} id={id}/></>}
+            <><p data-test="flashcard-text">{conteudoCard}</p> <BotoesResposta fecharCard={fecharCard} id={id}/></>}
         </StyledCardPergunta>
     )
 }
