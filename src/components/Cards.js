@@ -7,50 +7,73 @@ import imgSetaPlay from "../assets/img/seta_play.png"
 import imgCerto from "../assets/img/icone_certo.png"
 import imgQuase from "../assets/img/icone_quase.png"
 import imgErro  from "../assets/img/icone_erro.png"
-const listaIcones = [imgSetaPlay, imgCerto, imgQuase, imgErro]
+const listaIcones = [imgErro, imgQuase , imgCerto]
 
 export default function Cards(){
     const [listaCards, setListaCards] = useState(cards)
     const [cardAberto, setCardAberto] = useState({})
-    const [cor, setCor] = useState("#000")
     const [icones, setIcones] = useState(listaIcones)
+   
     
 
-    function mostrarPergunta(i){
-        const openCard = listaCards[i]
+    function mostrarPergunta(id){
+        const openCard = listaCards[id]
         const novoCardAberto = {question: openCard.question, answer: openCard.answer}
         setCardAberto(novoCardAberto)
         
     }
 
-    function fecharCard(i){
+    function fecharCard(index, i, valorbtn){
+        console.log(valorbtn)
         const novaListaCards = [...listaCards]
-        const cardFechado = novaListaCards[i]
-        cardFechado.question = "x"
+        const cardFechado = novaListaCards[index]
+        switch(valorbtn){
+            case "x":
+            cardFechado.question = "x";
+            break;
+            case "y":
+            cardFechado.question = "y";
+            break;
+            case "z":
+            cardFechado.question = "z";
+            break;
+        }
         setListaCards(novaListaCards)
     }
+    
+    function aparenciaCard(card, id){
+        if(card.question === "x"){
+            return (<img src={icones[0]} alt="" />)
+        } else if(card.question === "y") {
+            return (<img src={icones[1]} alt="" />)
+        } else if (card.question === "z"){
+            return (<img src={icones[2]} alt="" />)
+        } else {
+            return (<img src={imgSetaPlay} alt="seta play" onClick={()=>mostrarPergunta(id)}/>)
+        }
+    }
+
 
     return (
         <div>
-           {listaCards.map((card, index) => {
+           {listaCards.map((card, id) => {       
+
             return (
                 <>
                 {cardAberto.question === card.question? 
                 <CardPergunta 
-                key={index}
+                key={card.answer}
                 perguntaCard={cardAberto.question} 
                 respostaCard={cardAberto.answer} 
                 fecharCard={fecharCard}
-                index={index}
+                id={id}
                 /> 
                 : 
-                <StyledCard respondido={card.question} key={index}> 
-                    <p>Pergunta {index + 1}</p> 
-                    {card.question !== "x"? 
-                        <img src={icones[0]} alt="seta play" onClick={()=>mostrarPergunta(index)}/>
-                        :
-                        <img src={icones[3]} alt="icone erro" />
-                    }  
+                <StyledCard respondido={card.question} key={id}> 
+                    <p>Pergunta {id + 1}</p> 
+                    {aparenciaCard(card, id)}
+                        
+     
                 </StyledCard>}
                 </>        
             )
@@ -77,7 +100,27 @@ p{
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  color: ${props => props.respondido === "x"? "red": "#000"};
-  text-decoration: none;
+  color: ${props => {switch(props.respondido){
+            case "x":
+                return "#FF3030";
+            case "y":
+                return "#FF922E";
+            case "z":
+                return "#2FBE34";
+            default:
+                return "#333333"
+            
+  }}};
+  text-decoration: ${props => {switch(props.respondido){
+            case "x":
+                return "line-through";
+            case "y":
+                return "line-through";
+            case "z":
+                return "line-through";
+            default:
+                return "#333333"
+            
+  }}};
 }
 ` 

@@ -1,7 +1,8 @@
 import styled from "styled-components"
-export default function BotaoResposta({texto,fecharCard,index, i}) {
+export default function BotaoResposta({texto,fecharCard,id, i, valorbtn}) {
+    
     return (
-            <StyledBotaoResposta key={texto} onClick={()=>fecharCard(index, i)}>
+            <StyledBotaoResposta key={texto} onClick={()=>fecharCard(id, i, valorbtn)}>
                 {texto}
             </StyledBotaoResposta>
     )

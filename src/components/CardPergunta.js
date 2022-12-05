@@ -4,7 +4,7 @@ import imgSetaVirar from "../assets/img/seta_virar.png"
 import BotoesResposta from "./BotoesResposta";
 
 
-export default function CardPergunta({perguntaCard, respostaCard, fecharCard, index}){
+export default function CardPergunta({perguntaCard, respostaCard, fecharCard, id}){
     const [conteudoCard, setConteudoCard] = useState(perguntaCard)
     
     function mostraResposta(){
@@ -17,7 +17,7 @@ export default function CardPergunta({perguntaCard, respostaCard, fecharCard, in
             {conteudoCard === perguntaCard? 
             <><p>{conteudoCard}</p><img src={imgSetaVirar} alt="seta virar" onClick={mostraResposta}/></> 
             : 
-            <><p>{conteudoCard}</p> <BotoesResposta fecharCard={fecharCard} index={index}/></>}
+            <><p>{conteudoCard}</p> <BotoesResposta fecharCard={fecharCard} id={id}/></>}
         </StyledCardPergunta>
     )
 }
