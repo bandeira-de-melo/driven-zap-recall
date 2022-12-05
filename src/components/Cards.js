@@ -9,10 +9,13 @@ import imgQuase from "../assets/img/icone_quase.png"
 import imgErro  from "../assets/img/icone_erro.png"
 const listaIcones = [imgErro, imgQuase , imgCerto]
 
+
+
 export default function Cards(){
     const [listaCards, setListaCards] = useState(cards)
     const [cardAberto, setCardAberto] = useState({})
     const [icones, setIcones] = useState(listaIcones)
+    const [quantidadeCards, setQuantidadeCars] = useState(0)
    
     
 
@@ -57,7 +60,6 @@ export default function Cards(){
     return (
         <div>
            {listaCards.map((card, id) => {       
-
             return (
                 <>
                 {cardAberto.question === card.question? 

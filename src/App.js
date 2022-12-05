@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import  Cards  from "./components/Cards";
+import Footer from "./components/Footer";
 import LogoContainer from "./components/LogoContainer";
 
 
@@ -10,6 +11,7 @@ export default function App() {
     <StyledApp>
       <LogoContainer/>
       <Cards/>
+      <Footer/>
     </StyledApp>
   );
 }
